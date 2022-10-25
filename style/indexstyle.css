@@ -2,3 +2,9 @@ header{
     height: 100px;
     background-color: gray;
 }
+
+input[type=text], input[type=number], input[type=submit], select {
+    height: 50px;
+    text-align: center;
+    width: 400px;
+}

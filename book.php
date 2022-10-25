@@ -44,6 +44,12 @@ $autor = $stmt_autor->fetch();
 
         <h2> <?php echo 'Language: '; echo $book['language']; ?></h2>
 
+        <h2> <?php echo 'Stock saldo: '; echo $book['stock_saldo']; ?></h2>
+
+        <h2> <?php echo 'Type: '; echo $book['type']; ?></h2>
+
+        <h2> <?php echo 'Pages: '; echo $book['pages']; ?></h2>
+
         <img src="<?php echo $book['cover_path'] ?>">
 
         <p> <?php echo 'Summary: '; echo $book['summary']; ?></p>
@@ -54,5 +60,9 @@ $autor = $stmt_autor->fetch();
         <li><a href="edit_book.php?id=<?=$id;?>">Change</li>
         <li><a href="delete.php?id=<?=$id;?>">Delete</li>
         <li><a href="index.php">Return to book list</li>
+        
+        <li><a href="book.php?id=<?=$id;?>">Return to book</li>
+        <li><a href="index.php">Return to book list</li>
+        <li><a href="add_book.php">Add book to book list</li>
 </body>
 </html>

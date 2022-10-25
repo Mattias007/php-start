@@ -29,13 +29,17 @@ if (isset($_POST['savebutton'])) {
     $price = $_POST['price'];
     $release_date = $_POST['release_date'];
     $language = $_POST['language'];
+    $pages = $_POST['pages'];
+    $stock_saldo =$_POST['stock_saldo'];
+    $summary =$_POST['summary'];
+    $cover_path=$_POST['cover_path'];
 
-            $sql = "UPDATE books SET title=:title , price=:price , language=:language , release_date=:release_date WHERE id=:id";
+            $sql = "UPDATE books SET title=:title , price=:price , language=:language , release_date=:release_date , pages=:pages , stock_saldo=:stock_saldo, summary=:summary, cover_path=:cover_path WHERE id=:id";
             $sql1 = "UPDATE book_authors SET author_id=:author WHERE book_id=:id";
 
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $id ,'title' => $title,'price' => $price, 'language' => $language, 'release_date' => $release_date]);
+    $stmt->execute(['id' => $id ,'title' => $title,'price' => $price, 'language' => $language, 'release_date' => $release_date, 'pages'=> $pages, 'stock_saldo'=> $stock_saldo, 'summary'=>$summary,'cover_path'=>$cover_path]);
     $resposne = $stmt->rowCount() . "  Book/Books UPDATE successfull";
     
     $stmt1 = $pdo->prepare($sql1);
@@ -66,17 +70,27 @@ if (isset($_POST['savebutton'])) {
 
         <div>
             <label for="title">Change price</label>
-            <input type="text" name="price" id="price" value="<?php echo $book['price']?>">
+            <input type="number" name="price" id="price" value="<?php echo $book['price']?>">
         </div>
 
         <div>
             <label for="title">Change Release date</label>
-            <input type="text" name="release_date" id="release_date" value="<?php echo $book['release_date']?>">
+            <input type="number" name="release_date" id="release_date" value="<?php echo $book['release_date']?>">
         </div>
 
         <div>
             <label for="title">Change Language</label>
             <input type="text" name="language" id="language" value="<?php echo $book['language']?>">
+        </div>
+
+        <div>
+            <label for="title">Change pages</label>
+            <input type="number" name="pages" id="pages" value="<?php echo $book['pages']?>">
+        </div>
+
+        <div>
+            <label for="title">Change Stock Saldo</label>
+            <input type="number" name="stock_saldo" id="stock_saldo" value="<?php echo $book['pages']?>">
         </div>
 
         <label for="author">Choose a Author:</label>
@@ -98,11 +112,22 @@ if (isset($_POST['savebutton'])) {
 
         </select>
 
+
+        <p><?php echo $resposne ?></p>
+
+        <div class="summary">
+            <label for="title">Change summary</label>
+            <input type="text" name="summary" id="summary" value="<?php echo $book['summary']?>">
+        </div>
+
+        <div>
+            <label for="title">Change picture</label>
+            <input type="text" name="cover_path" id="cover_path" value="<?php echo $book['cover_path']?>">
+        </div>
+
         <div>
             <input type="submit" name="savebutton" value="Save">
         </div>
-
-        <p><?php echo $resposne ?></p>
     </form>
 
 
