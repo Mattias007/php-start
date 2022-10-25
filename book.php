@@ -34,17 +34,20 @@ $autor = $stmt_autor->fetch();
     <h1><?php echo $book['title']?></h1>
 
     <div>
-        <?php
-                echo '<ul> Release date: ';
-                echo $book['release_date'];
+        <h2><?php echo 'Release date: '; echo $book['release_date']; ?></h2> 
         
-                echo '<ul> Price: ';
-                echo $book['price'];
+        <h2> <?php echo 'Price: '; echo $book['price']; ?></h2>
 
-                echo '<ul> Autor: ';
-                echo $autor['first_name'];echo ' '; echo $autor['last_name'];
+        <h2> <?php echo 'Autor: '; echo $autor['first_name']; echo ' '; echo $autor['last_name']; ?></h2>
 
-        ?>
+        <h2> <?php echo 'Release date: '; echo $book['release_date'];?></h2>
+
+        <h2> <?php echo 'Language: '; echo $book['language']; ?></h2>
+
+        <img src="<?php echo $book['cover_path'] ?>">
+
+        <p> <?php echo 'Summary: '; echo $book['summary']; ?></p>
+
     </div>
 
 

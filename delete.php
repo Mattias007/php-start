@@ -36,6 +36,7 @@ $book = $stmt->fetch();
 
     <?php 
         if (sizeof($_POST) == 2) { 
+            $sql = "DELETE FROM book_authors WHERE book_id=$id";
             $sql = "DELETE FROM books WHERE id=$id";
             $pdo->exec($sql);
             echo $stmt->rowCount() . " records DELETE successfully";
