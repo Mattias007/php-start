@@ -1,7 +1,6 @@
 <?php
 
 require_once('connection.php');
-require_once('header.php');
 
 $id =$_GET['id'];
 
@@ -23,7 +22,6 @@ $autor = $stmt_autor->fetch();
 
 $resposne = '';
 
-echo var_dump($_POST);
 if (isset($_POST['savebutton'])) { 
     $title = $_POST['title'];
     $price = $_POST['price'];

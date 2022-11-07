@@ -36,12 +36,12 @@ if (isset($_POST['savebutton'])) {
     <form action="add_author.php" method="post">
 
         <div>
-            <label for="title">Change First Name</label>
+            <label for="title">Add First Name</label>
             <input type="text" name="first_name" id="first_name" value="">
         </div>
 
         <div class="summary">
-            <label for="title">Change Last Name</label>
+            <label for="title">Add Last Name</label>
             <input type="text" name="last_name" id="last_name" value="">
         </div>
 
@@ -51,7 +51,7 @@ if (isset($_POST['savebutton'])) {
     </form>
 
 
-    <li><a href="book.php?id=<?=$id;?>">Return to book</li>
+
     <li><a href="index.php">Return to book list</li>
     <li><a href="add_book.php">Add book to book list</li>
 
