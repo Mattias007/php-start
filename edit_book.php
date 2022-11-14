@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 require_once('connection.php');
 
 $id =$_GET['id'];
@@ -31,13 +33,14 @@ if (isset($_POST['savebutton'])) {
     $stock_saldo =$_POST['stock_saldo'];
     $summary =$_POST['summary'];
     $cover_path=$_POST['cover_path'];
+    $type=$_POST['type'];
 
-            $sql = "UPDATE books SET title=:title , price=:price , language=:language , release_date=:release_date , pages=:pages , stock_saldo=:stock_saldo, summary=:summary, cover_path=:cover_path WHERE id=:id";
+            $sql = "UPDATE books SET title=:title , price=:price , language=:language , release_date=:release_date , pages=:pages , stock_saldo=:stock_saldo, summary=:summary, cover_path=:cover_path, type=:type WHERE id=:id";
             $sql1 = "UPDATE book_authors SET author_id=:author WHERE book_id=:id";
 
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $id ,'title' => $title,'price' => $price, 'language' => $language, 'release_date' => $release_date, 'pages'=> $pages, 'stock_saldo'=> $stock_saldo, 'summary'=>$summary,'cover_path'=>$cover_path]);
+    $stmt->execute(['id' => $id ,'title' => $title,'price' => $price, 'language' => $language, 'release_date' => $release_date, 'pages'=> $pages, 'stock_saldo'=> $stock_saldo, 'summary'=>$summary,'cover_path'=>$cover_path, 'type'=>$type]);
     $resposne = $stmt->rowCount() . "  Book/Books UPDATE successfull";
     
     $stmt1 = $pdo->prepare($sql1);
@@ -121,6 +124,15 @@ if (isset($_POST['savebutton'])) {
         <div>
             <label for="title">Change picture</label>
             <input type="text" name="cover_path" id="cover_path" value="<?php echo $book['cover_path']?>">
+        </div>
+
+        <div>
+            <label for="type">Change type</label>
+            <select name="type" id="type">
+                <option  <?php if($book['type'] == 'ebook'){echo 'selected';}?>  value="ebook">ebook</option>
+                <option  <?php if($book['type'] == 'new'){echo 'selected';}?> value="new">new</option>
+                <option  <?php if($book['type'] == 'used'){echo 'selected';}?> value="used">used</option>
+            </select>
         </div>
 
         <div>

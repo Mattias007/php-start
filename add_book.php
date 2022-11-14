@@ -1,7 +1,6 @@
 <?php
 
 require_once('connection.php');
-require_once('header.php');
 
 
 // echo var_dump($_POST);
@@ -14,12 +13,13 @@ if (isset($_POST['savebutton'])) {
     $stock_saldo =$_POST['stock_saldo'];
     $summary =$_POST['summary'];
     $cover_path=$_POST['cover_path'];
+    $type=$_POST['type'];
 
-            $sql = "INSERT INTO books (title, price, language , release_date, pages , stock_saldo, summary, cover_path) VALUES (:title , :price , :language , :release_date , :pages , :stock_saldo, :summary, :cover_path)";
+            $sql = "INSERT INTO books (title, price, language , release_date, pages , stock_saldo, summary, cover_path, type) VALUES (:title , :price , :language , :release_date , :pages , :stock_saldo, :summary, :cover_path, :type)";
  
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['title' => $title,'price' => $price, 'language' => $language, 'release_date' => $release_date, 'pages'=> $pages, 'stock_saldo'=> $stock_saldo, 'summary'=>$summary,'cover_path'=>$cover_path]);
+    $stmt->execute(['title' => $title,'price' => $price, 'language' => $language, 'release_date' => $release_date, 'pages'=> $pages, 'stock_saldo'=> $stock_saldo, 'summary'=>$summary,'cover_path'=>$cover_path, 'type'=>$type]);
     $resposne = $stmt->rowCount() . "  Book/Books UPDATE successfull";
 
 
@@ -42,7 +42,7 @@ if (isset($_POST['savebutton'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit page</title>
+    <title>Add page</title>
 </head>
 <body>
 
@@ -109,6 +109,15 @@ if (isset($_POST['savebutton'])) {
         <div>
             <label for="title">Change picture</label>
             <input type="text" name="cover_path" id="cover_path" value="">
+        </div>
+
+        <div>
+            <label for="type">Change type</label>
+            <select name="type" id="type">
+                <option value="ebook">ebook</option>
+                <option value="new">new</option>
+                <option value="used">used</option>
+            </select>
         </div>
 
         <div>

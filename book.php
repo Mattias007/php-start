@@ -40,7 +40,6 @@ $autor = $stmt_autor->fetch();
 
         <h2> <?php echo 'Autor: '; echo $autor['first_name']; echo ' '; echo $autor['last_name']; ?></h2>
 
-
         <h2> <?php echo 'Language: '; echo $book['language']; ?></h2>
 
         <h2> <?php echo 'Stock saldo: '; echo $book['stock_saldo']; ?></h2>
